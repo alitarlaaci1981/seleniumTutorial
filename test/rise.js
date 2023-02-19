@@ -1,2 +1,2 @@
 console.log("Rise and Shine");
-console.log("lets get it started"
+console.log("lets get it started")
