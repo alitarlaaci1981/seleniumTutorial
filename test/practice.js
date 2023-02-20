@@ -18,7 +18,7 @@ describe('DevTools Tests', async function () {
     // Close the DevTools session and WebDriver instance after each test
     afterEach(async function () {
         //await devTools.close();
-        await driver.quit();
+       // await driver.quit();
     });
 
     it('Navigate to the website', async function () {
@@ -41,6 +41,18 @@ describe('DevTools Tests', async function () {
 
         const variable = await driver.executeScript('return window.sessionStorage')
         //console.log(variable)
+
+        await driver.navigate().refresh();
+        await driver.manage().getCookie('prospect_id').then(function(cookie){
+            console.log(`prospect id is : ${cookie.value}`);
+        })
+
+        await driver.manage().deleteCookie('prospect_id');
+
+        // await driver.manage().getCookie('prospect_id').then(function(cookie){
+        //     console.log(`prospect id is : ${cookie.value}`);
+        // })
+
 
         
 
