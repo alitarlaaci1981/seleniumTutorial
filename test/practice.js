@@ -13,7 +13,7 @@ describe('DevTools Tests', async function () {
     // Create a new WebDriver instance and DevTools session before each test
     beforeEach(async function () {
         driver = await new Builder().forBrowser('chrome').build();
-        //devTools = await DevTools.createSession(driver);
+        devTools = await DevTools.createSession(driver);
     });
 
     // Close the DevTools session and WebDriver instance after each test
@@ -28,12 +28,12 @@ describe('DevTools Tests', async function () {
             // Navigate to a URL
             await driver.get('https://www.idealimage.com/');
 
-            // await driver.manage().window().maximize();
+            await driver.manage().window().maximize();
 
             await driver.wait(() => driver.executeScript('return document.readyState').then(state => state === 'complete'), 50000);
 
             await driver.findElement(By.id('getStart')).click();
-            //await driver.get('https://www.idealimage.com/schedule')
+            await driver.get('https://www.idealimage.com/schedule')
 
             // const currentUrl = await driver.getCurrentUrl();
             // assert.equal(currentUrl, 'https://www.idealimage.com/free-consultation?c=1')
@@ -43,7 +43,7 @@ describe('DevTools Tests', async function () {
             const variable = await driver.executeScript('return window.sessionStorage')
             //console.log(variable)
 
-            
+
 
 
 
